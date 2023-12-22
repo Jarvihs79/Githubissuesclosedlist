@@ -13,8 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private val retrofit = Retrofit.Builder()
@@ -34,36 +33,36 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         val searchView: SearchView = findViewById(R.id.searchView)
 
-        // Fetch repository information
+        //getting info from repo
         lifecycleScope.launch {
             val repository = withContext(Dispatchers.IO) {
                 gitHubService.getRepository("facebookresearch", "llama-recipes")
             }
 
-            // Display the repository name
+
             repositoryNameTextView.text = repository.name
 
-            // Fetch closed issues
+
             val issues = withContext(Dispatchers.IO) {
                 gitHubService.getClosedIssues("facebookresearch", "llama-recipes")
             }
 
-            // Initialize RecyclerView and Adapter
+
             initializeRecyclerView(issues)
         }
 
-        // Initialize Picasso (if not initialized already)
+
         Picasso.setSingletonInstance(Picasso.Builder(this).build())
 
-        // Set up SearchView
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Handle search when submit button is pressed
+
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Handle search as the user types
+
                 adapter.filterIssues(newText)
                 return true
             }

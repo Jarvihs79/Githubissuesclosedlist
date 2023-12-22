@@ -1,8 +1,6 @@
 package com.example.githubclosedissueslist
 
-// GitHubIssue.kt
-// GitHubIssue.kt
-// GitHubIssue.kt
+
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 
@@ -14,7 +12,7 @@ data class GitHubIssue(
     val createdDate: Date,
     @SerializedName("closed_at")
     val closedDate: Date?,
-    val user: GitHubUser // Assuming GitHubUser is another data class representing a GitHub user
+    val user: GitHubUser
 )
 
 data class GitHubUser(

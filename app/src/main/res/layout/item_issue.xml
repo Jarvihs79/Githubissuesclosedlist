@@ -50,5 +50,5 @@
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 
-    <!-- Add other UI elements as needed -->
+
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.githubclosedissueslist
 
-// GitHubService.kt
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
